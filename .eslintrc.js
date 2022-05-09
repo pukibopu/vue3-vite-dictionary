@@ -4,7 +4,7 @@ module.exports = {
     es2021: true
   },
   extends: [
-    'plugin:vue/essential',
+    'plugin:vue/vue3-essential',
     'standard'
   ],
   parserOptions: {
@@ -17,5 +17,8 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
+    'vue/multi-word-component-names': ['error', {
+      ignores: ['login', 'index', 'offline', 'Header', 'Definition']
+    }]
   }
 }
