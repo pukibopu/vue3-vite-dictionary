@@ -1,5 +1,5 @@
 <template>
-<div class="definitions">
+  <div class="definitions">
     <p v-if="!props.searchWord" class="tip">
       Start by typing a word in search ...
     </p>
@@ -39,20 +39,23 @@
     </div>
   </div>
 </template>
+
 <script setup lang="ts">
-import { ref, watch } from 'vue'
 import axios from 'axios'
-interface PropsType{
-    searchWord: string
-}
-const props = defineProps<PropsType>()
-const result = ref([])
+import { watch, ref } from 'vue'
+const props = defineProps({
+  searchWord: String
+})
 const audio = ref()
+
+watch(() => props.searchWord, getData)
+const result = ref([])
+
 function handleClick (index:any) {
   audio.value[index].currentTime = 0
   audio.value[index].play()
 }
-watch(() => props.searchWord, getData)
+
 async function getData (newValue:any) {
   const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${newValue}`
   result.value = []
@@ -63,8 +66,8 @@ async function getData (newValue:any) {
     console.log(err)
   }
 }
-
 </script>
+
 <style lang="scss" scoped>
 ::-webkit-scrollbar {
   width: 5px;
