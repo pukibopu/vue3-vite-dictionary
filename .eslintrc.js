@@ -17,6 +17,7 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
+    'no-undef': 0,
     'vue/multi-word-component-names': ['error', {
       ignores: ['login', 'index', 'offline', 'Header', 'Definition']
     }]
